@@ -1,7 +1,10 @@
 import Utility.BaseDriver;
 import Utility.MyFunc;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 
 import java.sql.Driver;
@@ -54,38 +57,116 @@ public class nurhayat_ejunkie extends BaseDriver {
         city.sendKeys("Hatay");
         MyFunc.Bekle(1);
 
-        WebElement country = driver.findElement(By.xpath("(//*[@autocomplete='country'])[1]"));
-        country.isSelected();
+        WebElement postCode = driver.findElement(By.xpath("(//*[@autocomplete='zip'])[1]"));
+        postCode.sendKeys("31000");
         MyFunc.Bekle(1);
 
-       WebElement frame2 = driver.findElement(By.cssSelector("[class='EJIframeV3 EJOverlayV3']"));
-        driver.switchTo().frame(frame2);
+        Actions actions = new Actions(driver);
+        actions.moveToElement(driver.findElement(By.cssSelector("[class='Card-Type']")));
+        actions.keyDown(Keys.ARROW_DOWN).click().perform();
 
-        WebElement cardType = driver.findElement(By.xpath("//*[@class='Card-Type']"));
-        cardType.isSelected();
-        MyFunc.Bekle(2);
+        actions.moveToElement(driver.findElement(By.cssSelector("[class='Card-Type']")));
+        actions.keyDown(Keys.ARROW_DOWN).click().perform();
 
-
-
-        WebElement cardNumber = driver.findElement(By.xpath("//*[@class='Card-Number']"));
+        WebElement cardNumber = driver.findElement(By.cssSelector("[autocomplete='cc-number']"));
         cardNumber.sendKeys("4242 4242 4242 4242");
         MyFunc.Bekle(1);
 
         WebElement cardExpirity = driver.findElement(By.xpath("//*[@placeholder='MM / YY']"));
-        cardExpirity.sendKeys("12/2028");
+        cardExpirity.sendKeys("12/28");
         MyFunc.Bekle(1);
 
-        WebElement CVC = driver.findElement(By.xpath("//*[@placeholder='000']"));
-        CVC.sendKeys("315");
+        WebElement cvs = driver.findElement(By.cssSelector("[autocomplete='cc-csc']"));
+        cvs.sendKeys("315");
         MyFunc.Bekle(1);
 
+        WebElement paybtn = driver.findElement(By.cssSelector("[class='Pay-Button']"));
+        paybtn.click();
+        MyFunc.Bekle(2);
+
+        WebElement pass = driver.findElement(By.cssSelector("[class='right_i']"));
+        pass.click();
+
+    }
 
 
+    @Test
+    public void test2() {
+        driver.get("https://www.e-junkie.com/  ");
+        WebElement onclick = driver.findElement(By.xpath("(//*[@class='small_text'] )[1]"));
+        onclick.click();
 
-        //  WebElement nextBtn= driver.findElement(By.id("btnNext"));
-        // nextBtn.click();
+        WebElement trydemo = driver.findElement(By.xpath("(//*[@class='btn solid'])[1]"));
+        trydemo.click();
 
+        WebElement frame2 = driver.findElement(By.cssSelector("[class='EJIframeV3 EJOverlayV3']"));
+        driver.switchTo().frame(frame2);
 
-        //  MyFunc.Bekle(2);
+        WebElement cCard = driver.findElement(By.xpath("//*[@class='Payment-Button CC']"));
+        cCard.click();
+        MyFunc.Bekle(3);
+
+        WebElement email = driver.findElement(By.xpath("(//input[@type='email'])[1]"));
+        email.sendKeys("nurqatester@gmail.com");
+        MyFunc.Bekle(1);
+
+        WebElement c_email = driver.findElement(By.xpath("(//input[@type='email'])[2]"));
+        c_email.sendKeys("nurqatester@gmail.com");
+        MyFunc.Bekle(1);
+
+        WebElement nameCArd = driver.findElement(By.xpath("//input[@placeholder='Name On Card']"));
+        nameCArd.sendKeys("Nur");
+        MyFunc.Bekle(1);
+
+        WebElement telephone = driver.findElement(By.xpath("(//input[@placeholder='Optional'])[1]"));
+        telephone.sendKeys("05322625200");
+        MyFunc.Bekle(1);
+
+        WebElement company = driver.findElement(By.xpath("(//*[@autocomplete='company'])[1]"));
+        company.sendKeys("nurltd");
+        MyFunc.Bekle(1);
+
+        WebElement adress = driver.findElement(By.xpath("(//*[@autocomplete='address-1'])[1]"));
+        adress.sendKeys("esentepe mah");
+        MyFunc.Bekle(1);
+
+        WebElement adress2 = driver.findElement(By.xpath("(//*[@autocomplete='address-2'])[1]"));
+        adress2.sendKeys("esentepe mah");
+        MyFunc.Bekle(1);
+
+        WebElement city = driver.findElement(By.xpath("(//*[@autocomplete='city'])[1]"));
+        city.sendKeys("Hatay");
+        MyFunc.Bekle(1);
+
+        WebElement postCode = driver.findElement(By.xpath("(//*[@autocomplete='zip'])[1]"));
+        postCode.sendKeys("31000");
+        MyFunc.Bekle(1);
+
+        Actions actions = new Actions(driver);
+        actions.moveToElement(driver.findElement(By.cssSelector("[class='Card-Type']")));
+        actions.keyDown(Keys.ARROW_DOWN).click().perform();
+
+        actions.moveToElement(driver.findElement(By.cssSelector("[class='Card-Type']")));
+        actions.keyDown(Keys.ARROW_DOWN).click().perform();
+
+        WebElement cardNumber = driver.findElement(By.cssSelector("[autocomplete='cc-number']"));
+        cardNumber.sendKeys("4242 4242 4242 4242");
+        MyFunc.Bekle(1);
+
+        WebElement cardExpirity = driver.findElement(By.xpath("//*[@placeholder='MM / YY']"));
+        cardExpirity.sendKeys("12/28");
+        MyFunc.Bekle(1);
+
+        WebElement cvs = driver.findElement(By.cssSelector("[autocomplete='cc-csc']"));
+        cvs.sendKeys("315");
+        MyFunc.Bekle(1);
+
+        WebElement paybtn = driver.findElement(By.cssSelector("[class='Pay-Button']"));
+        paybtn.click();
+        MyFunc.Bekle(2);
+
+        WebElement pass = driver.findElement(By.cssSelector("[class='right_i']"));
+        pass.click();
+
     }
 }
