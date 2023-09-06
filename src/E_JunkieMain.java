@@ -4,12 +4,48 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 
-import java.sql.Driver;
+public class E_JunkieMain extends BaseDriver {
+    @Test
+    public void pay() {
+        driver.get("https://www.e-junkie.com/wiki/demo/paypal");
+        WebElement cart = driver.findElement(By.xpath("//a[text()='Add to Cart']"));
+        cart.click();
+        MyFunc.Bekle(1);
 
-public class nurhayat_ejunkie extends BaseDriver {
+        WebElement frame = driver.findElement(By.cssSelector("[class='EJIframeV3 EJOverlayV3']"));
+        driver.switchTo().frame(frame);
+
+        WebElement cCard = driver.findElement(By.xpath("//*[@class='Payment-Button CC']"));
+        cCard.click();
+        MyFunc.Bekle(3);
+
+        WebElement pay = driver.findElement(By.cssSelector("[type='button'][class='Pay-Button']"));
+        pay.click();
+    }
+
+    @Test
+    public void e_junkie() {
+        driver.get("https://www.e-junkie.com/");
+        WebElement standard = driver.findElement(By.xpath("//a[text()='PayPal Standard']"));
+        standard.click();
+        MyFunc.Bekle(1);
+        WebElement cart = driver.findElement(By.xpath("//a[text()='Add to Cart']"));
+        cart.click();
+        MyFunc.Bekle(1);
+
+        WebElement frame = driver.findElement(By.cssSelector("[class='EJIframeV3 EJOverlayV3']"));
+        driver.switchTo().frame(frame);
+
+        WebElement cCard = driver.findElement(By.xpath("//*[@class='Payment-Button CC']"));
+        cCard.click();
+        MyFunc.Bekle(3);
+
+        WebElement pay = driver.findElement(By.cssSelector("[type='button'][class='Pay-Button']"));
+        pay.click();
+    }
+
     @Test
     public void Test1() {
         driver.get("https://www.e-junkie.com/wiki/demo ");
@@ -88,7 +124,6 @@ public class nurhayat_ejunkie extends BaseDriver {
         pass.click();
 
     }
-
 
     @Test
     public void test2() {
@@ -170,3 +205,7 @@ public class nurhayat_ejunkie extends BaseDriver {
 
     }
 }
+
+
+
+
